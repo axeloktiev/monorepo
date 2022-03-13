@@ -6,8 +6,8 @@ type Props = {
 
 export const Header: FC<Props> = ({text}) => {
     return (
-        <div>
+        <header>
             {text}
-        </div>
+        </header>
     );
 };
