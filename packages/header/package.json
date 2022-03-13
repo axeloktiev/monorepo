@@ -3,7 +3,6 @@
   "version": "0.0.6",
   "description": "description",
   "main": "dist/index.js",
-  "type": "module",
   "repository": {
     "type": "git",
     "url": "https://github.com/axeloktiev/monorepo.git"

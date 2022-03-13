@@ -3,7 +3,7 @@ import React, {FC} from 'react';
 type Props = {
     text: string
 }
-
+// Comment
 const Header: FC<Props> = ({text}) => {
     return (
         <header>
@@ -12,4 +12,4 @@ const Header: FC<Props> = ({text}) => {
     );
 };
 
-export default Header
+export default Header;
