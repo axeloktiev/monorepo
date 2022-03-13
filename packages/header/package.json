@@ -12,5 +12,6 @@
     "build": "babel src -d dist --root-mode upward --extensions \".ts,.tsx\" && tsc -p tsconfig.build.json"
   },
   "author": "author",
-  "license": "ISC"
+  "license": "ISC",
+  "gitHead": "7d1dcc581a4e8ccf99b63845ae78a0e12e6a48b6"
 }
