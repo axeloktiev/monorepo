@@ -3,7 +3,8 @@
     "packages/*"
   ],
   "version": "0.0.9",
-  "npmClient": "npm",
+  "npmClient": "yarn",
+  "useWorkspaces": true,
   "command": {
     "publish": {
       "ignoreChanges": [
@@ -12,11 +13,10 @@
       ],
       "message": "chore(release): publish"
     },
-    "bootstrap": {
-      "ignore": "component-*",
-      "npmClientArgs": [
-        "--no-package-lock"
-      ]
+    "commands" : {
+      "publish": {
+        "conventionalCommits": true
+      }
     }
   }
 }

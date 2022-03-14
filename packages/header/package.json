@@ -2,13 +2,14 @@
   "name": "@axeloktiev/header",
   "version": "0.0.9",
   "description": "description",
-  "main": "dist/index.js",
+  "main": "dist/index",
   "type": "module",
   "repository": {
     "type": "git",
     "url": "https://github.com/axeloktiev/monorepo.git"
   },
   "scripts": {
+    "build:m": "microbundle-crl --no-compress --format modern,cjs",
     "build": "babel src -d dist --root-mode upward --extensions \".ts,.tsx\" && tsc -p tsconfig.build.json"
   },
   "author": "author",
