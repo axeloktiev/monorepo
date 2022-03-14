@@ -1,6 +1,6 @@
 {
   "name": "@axeloktiev/header",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "description",
   "main": "dist/index",
   "type": "module",
