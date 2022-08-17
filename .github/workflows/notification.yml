@@ -26,7 +26,7 @@ jobs:
       - name: Show Response
         run: |
           echo ${{ steps.myRequest.outputs.response.deployments.find(item => item.meta.githubCommitSha.includes('7f19e41')).url }}
-      #END
+      #END SECTION
       - name: Send Slack notification
         uses: abinoda/slack-action@master
         env:
