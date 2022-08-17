@@ -1,7 +1,6 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import {Header} from '@axeloktiev/header';
 
 function App() {
   return (
@@ -19,8 +18,6 @@ function App() {
         >
           Learn React
         </a>
-
-        <Header/>
       </header>
     </div>
   );
