@@ -1,4 +1,5 @@
 name: Slack package version notification
+
 on:
   push:
     branches-ignore:
