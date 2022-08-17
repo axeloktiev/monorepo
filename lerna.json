@@ -6,10 +6,7 @@
   "npmClient": "npm",
   "command": {
     "publish": {
-      "ignoreChanges": [
-        "ignored-file",
-        "*.md"
-      ],
+      "tempTag": true,
       "message": "chore(release): publish"
     },
     "bootstrap": {
