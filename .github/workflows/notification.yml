@@ -13,6 +13,7 @@ jobs:
         uses: pr-mpt/actions-commit-hash@v1
         with:
           commit: "${{ github.event.workflow_run.head_sha }}"
+          prefix: "sha-"
 
       - name: Send Slack notification
         uses: abinoda/slack-action@master
