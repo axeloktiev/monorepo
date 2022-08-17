@@ -10,6 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
+      - name: Debug
+        run: |
+          echo ${github.event.registry_package}
+
       - name: Send Slack notification
         uses: abinoda/slack-action@master
         env:
