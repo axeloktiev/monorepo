@@ -8,7 +8,6 @@ const Header: FC<Props> = ({text}) => {
     return (
         <header>
             {text}
-            hi
         </header>
     );
 };
