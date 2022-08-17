@@ -15,7 +15,18 @@ jobs:
       - run: echo $SHA
         env:
           SHA: ${{ steps.short-sha.outputs.sha }}
-
+      #START
+      - name: Make Request
+        id: myRequest
+        uses: fjogeleit/http-request-action@v1
+        with:
+          url: "https://api.vercel.com/v9/projects/${{ secrets.VERCEL_PROJECT_ID}}"
+          customHeaders: '{"Content-Type": "application/json", "Authorization": "Bearer ${{ secrets.VERCEL_TOKEN}}'
+      - name: Show Response
+        run: |
+          echo ${{ steps.myRequest.outputs.response }}      
+          echo ${{ steps.myRequest.outputs.response.latestDeployments.find(item => item?.meta?.githubCommitSha.includes('f526ed5'))?.url }}
+      #END
       - name: Send Slack notification
         uses: abinoda/slack-action@master
         env:
