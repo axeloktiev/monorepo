@@ -25,7 +25,7 @@ jobs:
           customHeaders: '{"Authorization": "Bearer ${{ secrets.VERCEL_TOKEN}}"}'
       - name: Show Response
         run: |
-          echo ${{ steps.myRequest.outputs.response }}
+          echo ${{ steps.myRequest.outputs.response.deployments.find(item => item.meta.githubCommitSha.includes('7f19e41')).url }}
       #END
       - name: Send Slack notification
         uses: abinoda/slack-action@master
