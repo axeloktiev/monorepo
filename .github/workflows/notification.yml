@@ -1,9 +1,8 @@
 name: Slack package version notification 2.1
 
 on:
-  push:
-    branches-ignore:
-      - 'releases/**-alpha'
+  registry_package:
+    types: [published, updated]
 
 jobs:
   notify:
