@@ -10,7 +10,7 @@
   },
   "scripts": {
     "build:m": "microbundle-crl --no-compress --format modern,cjs",
-    "build": "babel src -d dist --root-mode upward --extensions \".ts,.tsx\" && tsc -p tsconfig.build.json"
+    "build": "babel .. -d dist --root-mode upward --extensions \\\".ts,.tsx\\\" && tsc -p tsconfig.build.json"
   },
   "author": "author",
   "license": "ISC",
