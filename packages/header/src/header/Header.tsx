@@ -7,7 +7,6 @@ type Props = {
 const Header: FC<Props> = ({text}) => {
     return (
         <header>
-            hi
             {text}
         </header>
     );
