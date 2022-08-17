@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import { FC } from 'react';
 
 type Props = {
     text: string
@@ -8,6 +8,7 @@ const Header: FC<Props> = ({text}) => {
     return (
         <header>
             {text}
+            hi
         </header>
     );
 };
