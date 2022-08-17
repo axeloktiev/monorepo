@@ -9,15 +9,16 @@ jobs:
     name: Notify slack
     runs-on: ubuntu-latest
     steps:
-      - id: commit
-        uses: pr-mpt/actions-commit-hash@v1
-        with:
-          commit: "${{ github.event.workflow_run.head_sha }}"
-          prefix: "sha-"
+      - uses: actions/checkout@v2
+      - uses: benjlevesque/short-sha@v1.2
+        id: short-sha
+      - run: echo $SHA
+        env:
+          SHA: ${{ steps.short-sha.outputs.sha }}
 
       - name: Send Slack notification
         uses: abinoda/slack-action@master
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
         with:
-          args: '{\"channel\":\"${{ secrets.SLACK_CHANNEL_ID}}\",\"blocks\":[{\"type\":\"header\",\"text\":{\"type\":\"plain_text\",\"text\":\"New package published\"}},{\"type\":\"divider\"},{\"type\":\"context\",\"elements\":[{\"type\":\"mrkdwn\",\"text\":\":package: Name: @playsportsgroup\/${{ steps.commit.outputs.short }} \n\"},{\"type\":\"mrkdwn\",\"text\":\":rocket: Version: ${{ github.event.registry_package.package_version.version }}\"}]},{\"type\":\"actions\",\"block_id\":\"packageLink\",\"elements\":[{\"type\":\"button\",\"text\":{\"type\":\"plain_text\",\"text\":\"Visit the package\"},\"style\":\"primary\",\"action_id\":\"button\",\"url\":\"${{ github.event.registry_package.html_url }}\"}]}]}'
+          args: '{\"channel\":\"${{ secrets.SLACK_CHANNEL_ID}}\",\"blocks\":[{\"type\":\"header\",\"text\":{\"type\":\"plain_text\",\"text\":\"New package published\"}},{\"type\":\"divider\"},{\"type\":\"context\",\"elements\":[{\"type\":\"mrkdwn\",\"text\":\":package: Name: @playsportsgroup\/${{ steps.short-sha.outputs.sha }} \n\"},{\"type\":\"mrkdwn\",\"text\":\":rocket: Version: ${{ github.event.registry_package.package_version.version }}\"}]},{\"type\":\"actions\",\"block_id\":\"packageLink\",\"elements\":[{\"type\":\"button\",\"text\":{\"type\":\"plain_text\",\"text\":\"Visit the package\"},\"style\":\"primary\",\"action_id\":\"button\",\"url\":\"${{ github.event.registry_package.html_url }}\"}]}]}'
