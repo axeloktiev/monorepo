@@ -1,4 +1,4 @@
-name: Slack package version notification 2.0
+name: Slack package version notification 2.1
 
 on:
   push:
