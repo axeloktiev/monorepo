@@ -16,15 +16,4 @@ jobs:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
         with:
           args: '{
-          \"channel\":\"${{ secrets.SLACK_CHANNEL_ID}}\",
-          \"blocks\": [
-                  {
-                      \"type\": \"header\",
-                      \"text\": {
-                          \"type\": \"plain_text\",
-                          \"text\": \"My awesome published package\",
-                          \"emoji\": true
-                      }
-                  }
-              ]
-          }'
+          \"channel\":\"${{ secrets.SLACK_CHANNEL_ID}}\", \"text\":\"Hello world\"}''
