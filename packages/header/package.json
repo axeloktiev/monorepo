@@ -1,5 +1,5 @@
 {
-  "name": "@axeloktiev/header-pkg",
+  "name": "@axeloktiev/header",
   "version": "2.0.0",
   "description": "description",
   "main": "dist/index",
@@ -10,7 +10,7 @@
   },
   "scripts": {
     "build:m": "microbundle-crl --no-compress --format modern,cjs",
-    "build": "babel .. -d dist --root-mode upward --extensions \\\".ts,.tsx\\\" && tsc -p tsconfig.build.json"
+    "build": "babel src -d dist --root-mode upward --extensions \\\\\\\".ts,.tsx\\\\\\\" && tsc -p tsconfig.build.json"
   },
   "author": "author",
   "license": "ISC",
