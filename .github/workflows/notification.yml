@@ -1,0 +1,19 @@
+name: Slack package version notification 2.1
+
+on:
+  push:
+    branches-ignore:
+      - 'releases/**-alpha'
+
+jobs:
+  notify:
+    name: Notify slack
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Send Slack notification
+        uses: abinoda/slack-action@master
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+        with:
+          args: '{\"channel\":\"${{ secrets.SLACK_CHANNEL_ID}}\", \"text\":\"Hello world\"}'
