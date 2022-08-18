@@ -25,8 +25,7 @@ jobs:
           customHeaders: '{"Authorization": "Bearer ${{ secrets.VERCEL_TOKEN}}"}'
       - name: Show Response
         run: |
-          echo ${{ steps.myRequest.outputs.response.deployments[0] }}
-          echo "detailed ${{ steps.myRequest.outputs.response.deployments }}"
+          echo "detailed ${{ steps.myRequest.outputs.response }}"
       #END SECTION
       - name: Send Slack notification
         uses: abinoda/slack-action@master
