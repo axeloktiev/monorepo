@@ -25,11 +25,11 @@ jobs:
           customHeaders: '{"Authorization": "Bearer ${{ secrets.VERCEL_TOKEN}}"}'
       - name: Show Response
         run: |
-          echo "detailed ${{ fromJson(steps.myRequest.outputs.response).deployments }}"
+          echo "detailed ${{ fromJson(steps.myRequest.outputs.response).deployments[0].url }}"
       #END SECTION
       - name: Send Slack notification
         uses: abinoda/slack-action@master
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
         with:
-          args: '{\"channel\":\"${{ secrets.SLACK_CHANNEL_ID}}\",\"blocks\":[{\"type\":\"header\",\"text\":{\"type\":\"plain_text\",\"text\":\"New package published\"}},{\"type\":\"divider\"},{\"type\":\"context\",\"elements\":[{\"type\":\"mrkdwn\",\"text\":\":package: Name: @playsportsgroup\/${{ steps.short-sha.outputs.sha }} \n\"},{\"type\":\"mrkdwn\",\"text\":\":rocket: Version: ${{ github.event.registry_package.package_version.version }}\"}]},{\"type\":\"actions\",\"block_id\":\"packageLink\",\"elements\":[{\"type\":\"button\",\"text\":{\"type\":\"plain_text\",\"text\":\"Visit the package\"},\"style\":\"primary\",\"action_id\":\"button\",\"url\":\"${{ github.event.registry_package.html_url }}\"}]}]}'
+          args: '{\"channel\":\"${{ secrets.SLACK_CHANNEL_ID}}\",\"blocks\":[{\"type\":\"header\",\"text\":{\"type\":\"plain_text\",\"text\":\"New package published\"}},{\"type\":\"divider\"},{\"type\":\"context\",\"elements\":[{\"type\":\"mrkdwn\",\"text\":\":package: Name: @playsportsgroup\/${{ steps.short-sha.outputs.sha }} \n\"},{\"type\":\"mrkdwn\",\"text\":\":rocket: Version: ${{ github.event.registry_package.package_version.version }}\"}]},{\"type\":\"actions\",\"block_id\":\"packageLink\",\"elements\":[{\"type\":\"button\",\"text\":{\"type\":\"plain_text\",\"text\":\"Visit the documentation\"},\"style\":\"primary\",\"action_id\":\"button\",\"url\":\"${{ fromJson(steps.myRequest.outputs.response).deployments[0].url }}\"}, {\"type\":\"button\",\"text\":{\"type\":\"plain_text\",\"text\":\"Visit the package\"},\"style\":\"primary\",\"action_id\":\"button\",\"url\":\"${{ github.event.registry_package.html_url }}\"}]}]}'
