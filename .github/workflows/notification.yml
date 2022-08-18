@@ -15,7 +15,7 @@ jobs:
       - run: echo $SHA
         env:
           SHA: ${{ steps.short-sha.outputs.sha }}
-      #START
+      #START SECTION
       - name: Make Request
         id: myRequest
         uses: fjogeleit/http-request-action@v1
